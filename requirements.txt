@@ -1,1 +1,11 @@
 streamlit
+transformers
+torch==2.7
+pdfplumber
+reportlab
+requests
+beautifulsoup4
+altair==4.2.2
+sentencepiece
+sacremoses
+streamlit-components
