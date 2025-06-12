@@ -84,22 +84,8 @@ def copy_to_clipboard(text, key):
 # Modular function to display translation results
 def display_translation(translated_text, source_key):
     if not translated_text.startswith("Error"):
-        # Use session state to toggle full text display
-        if f"show_full_{source_key}" not in st.session_state:
-            st.session_state[f"show_full_{source_key}"] = False
-
         st.write("**Translated Text Preview:**")
-        preview_text = translated_text[:1000] + "..." if len(translated_text) > 1000 else translated_text
-        
-        # Display preview or full text based on session state
-        if st.session_state[f"show_full_{source_key}"]:
-            st.write(translated_text)
-        else:
-            st.write(preview_text)
-
-        # Button to toggle full text display
-        if st.button("Show Full Text" if not st.session_state[f"show_full_{source_key}"] else "Hide Full Text", key=f"toggle_{source_key}"):
-            st.session_state[f"show_full_{source_key}"] = not st.session_state[f"show_full_{source_key}"]
+        st.write(translated_text)
 
         # Button to copy full text to clipboard
         copy_to_clipboard(translated_text, source_key)
